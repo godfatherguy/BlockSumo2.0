@@ -1,24 +1,27 @@
 package org.godfather.blocksumo.api.server.events;
 
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.EventExecutor;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.godfather.blocksumo.BlockSumo;
+import org.godfather.blocksumo.api.server.ServerPhase;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public final class FastEventsManager implements Listener {
 
-    private final JavaPlugin plugin;
+    private final BlockSumo minigame;
     private final Map<Class<? extends Event>, FastEvent<?>> fastEvents = new HashMap<>();
 
-    public FastEventsManager(JavaPlugin plugin) {
-        this.plugin = plugin;
+    public FastEventsManager(BlockSumo minigame) {
+        this.minigame = minigame;
     }
 
-    public FastEvent<?> registerEvent(FastEvent<?> fastEvent) {
+    public void registerEvent(FastEvent<?> fastEvent) {
         FastEvent<Event> generic = (FastEvent<Event>) fastEvent;
 
         if (fastEvents.containsKey(fastEvent.getEventClass())) {
@@ -30,18 +33,41 @@ public final class FastEventsManager implements Listener {
             }
         }));
 
-        plugin.getServer().getPluginManager().registerEvent(fastEvent.getEventClass(),
-                fastEvent, fastEvent.priority(), executor, plugin, false);
+        minigame.getPlugin().getServer().getPluginManager().registerEvent(fastEvent.getEventClass(),
+                fastEvent, fastEvent.priority(), executor, minigame.getPlugin(), false);
 
-        return fastEvents.put(fastEvent.getEventClass(), fastEvent);
+        fastEvents.put(fastEvent.getEventClass(), fastEvent);
     }
 
     public void register() {
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        minigame.getPlugin().getServer().getPluginManager().registerEvents(this, minigame.getPlugin());
     }
 
     public void unregister() {
         fastEvents.values().forEach(HandlerList::unregisterAll);
         HandlerList.unregisterAll(this);
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onPreLogin(AsyncPlayerPreLoginEvent event) {
+        if (minigame.getPhase() != ServerPhase.END)
+            return;
+
+        event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_FULL, "Il server non è ancora avviato, aspetta...");
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onJoin(PlayerJoinEvent event) {
+        event.setJoinMessage(null);
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onDeath(PlayerDeathEvent event) {
+        event.setDeathMessage(null);
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onQuit(PlayerQuitEvent event) {
+        event.setQuitMessage(null);
     }
 }
