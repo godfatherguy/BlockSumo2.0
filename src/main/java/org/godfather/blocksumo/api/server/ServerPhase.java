@@ -5,7 +5,10 @@ import java.util.Optional;
 
 public enum ServerPhase {
 
-    LOAD(0), RUN(1), FREEZE(2), END(3);
+    LOAD(0),
+    RUN(1),
+    FREEZE(2),
+    END(3);
 
     private final int index;
 
