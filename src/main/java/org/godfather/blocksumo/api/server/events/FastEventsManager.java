@@ -6,18 +6,17 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.EventExecutor;
-import org.godfather.blocksumo.BlockSumo;
-import org.godfather.blocksumo.api.server.ServerPhase;
+import org.godfather.blocksumo.api.Bootstrap;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public final class FastEventsManager implements Listener {
 
-    private final BlockSumo minigame;
+    private final Bootstrap minigame;
     private final Map<Class<? extends Event>, FastEvent<?>> fastEvents = new HashMap<>();
 
-    public FastEventsManager(BlockSumo minigame) {
+    public FastEventsManager(Bootstrap minigame) {
         this.minigame = minigame;
     }
 
@@ -50,8 +49,10 @@ public final class FastEventsManager implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPreLogin(AsyncPlayerPreLoginEvent event) {
-        if (minigame.getPhase() != ServerPhase.END)
+        /*if (minigame.getPhase() != ServerPhase.END)
             return;
+
+         */
 
         event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_FULL, "Il server non è ancora avviato, aspetta...");
     }

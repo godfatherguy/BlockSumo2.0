@@ -1,6 +1,6 @@
 package org.godfather.blocksumo.bukkit;
 
-import org.godfather.blocksumo.api.game.GamePhase;
+import org.godfather.blocksumo.api.game.phases.GamePhase;
 
 public class BlockSumoGame {
 

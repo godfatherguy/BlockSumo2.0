@@ -1,13 +1,12 @@
 package org.godfather.blocksumo.api;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.godfather.blocksumo.BlockSumo;
 
 public abstract class MinigamePlugin extends JavaPlugin {
 
-    private final BlockSumo minigame;
+    private final Bootstrap minigame;
 
-    protected MinigamePlugin(BlockSumo minigame) {
+    protected MinigamePlugin(Bootstrap minigame) {
         this.minigame = minigame;
     }
 
