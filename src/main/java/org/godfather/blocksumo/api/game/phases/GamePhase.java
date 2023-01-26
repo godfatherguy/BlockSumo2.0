@@ -1,5 +1,6 @@
 package org.godfather.blocksumo.api.game.phases;
 
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.godfather.blocksumo.api.Bootstrap;
 
@@ -35,10 +36,12 @@ public abstract class GamePhase implements Listener, Phase {
 
     public final void onLoad() {
         running = true;
+        bootstrap.getPlugin().getServer().getPluginManager().registerEvents(this, bootstrap.getPlugin());
     }
 
     public final void onUnload() {
         running = false;
+        HandlerList.unregisterAll(this);
     }
 
     public boolean isRunning() {

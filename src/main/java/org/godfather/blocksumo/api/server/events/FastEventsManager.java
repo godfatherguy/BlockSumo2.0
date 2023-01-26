@@ -54,7 +54,7 @@ public final class FastEventsManager implements Listener {
 
          */
 
-        event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_FULL, "Il server non è ancora avviato, aspetta...");
+        //event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_FULL, "Il server non è ancora avviato, aspetta...");
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

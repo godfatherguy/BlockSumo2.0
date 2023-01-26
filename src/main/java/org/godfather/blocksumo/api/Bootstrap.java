@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.godfather.blocksumo.api.game.GameManager;
 import org.godfather.blocksumo.api.server.events.FastEvent;
 import org.godfather.blocksumo.api.server.events.FastEventsManager;
 import org.godfather.blocksumo.api.server.events.ServerFastEvent;
@@ -16,6 +17,7 @@ public abstract class Bootstrap {
     private JavaPlugin plugin;
     private boolean loaded = false;
     private FastEventsManager fastEventsManager;
+    private GameManager gameManager;
 
     protected abstract void onLoad();
 
@@ -48,6 +50,7 @@ public abstract class Bootstrap {
 
     public final void unload() {
         fastEventsManager.unregister();
+        gameManager.unload();
         loaded = false;
         onUnload();
     }
@@ -70,5 +73,14 @@ public abstract class Bootstrap {
 
     public void registerVariable(FastEvent<?> fastEvent) {
         fastEventsManager.registerEvent(fastEvent);
+    }
+
+    public void setGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
+        gameManager.load();
+    }
+
+    public GameManager getGameManager() {
+        return gameManager;
     }
 }
