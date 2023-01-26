@@ -2,13 +2,13 @@ package org.godfather.blocksumo.api.server.manager;
 
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.godfather.blocksumo.BlockSumo;
+import org.godfather.blocksumo.api.Bootstrap;
 
 public abstract class Manager implements Listener {
 
-    private final BlockSumo minigame;
+    protected final Bootstrap minigame;
 
-    protected Manager(BlockSumo minigame) {
+    protected Manager(Bootstrap minigame) {
         this.minigame = minigame;
     }
 
@@ -24,5 +24,9 @@ public abstract class Manager implements Listener {
     public final void unload() {
         HandlerList.unregisterAll(this);
         onUnload();
+    }
+
+    public Bootstrap getBootstrap() {
+        return minigame;
     }
 }

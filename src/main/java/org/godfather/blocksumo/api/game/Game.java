@@ -3,10 +3,11 @@ package org.godfather.blocksumo.api.game;
 import org.bukkit.Bukkit;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.phases.GamePhase;
+import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
 
 import java.util.UUID;
 
-public class Game {
+public abstract class Game {
 
     protected final Bootstrap bootstrap;
     protected final UUID uuid;
@@ -35,5 +36,9 @@ public class Game {
 
     public UUID getUUID() {
         return uuid;
+    }
+
+    public Scoreboard getScoreboard() {
+        return actualPhase.getScoreboard();
     }
 }

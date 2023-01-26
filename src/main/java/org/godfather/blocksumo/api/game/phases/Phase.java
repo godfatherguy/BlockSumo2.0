@@ -1,6 +1,6 @@
 package org.godfather.blocksumo.api.game.phases;
 
-import org.bukkit.scoreboard.Scoreboard;
+import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
 
 import java.util.Optional;
 
