@@ -6,9 +6,9 @@ import java.util.Optional;
 
 public interface Phase {
 
-    void onLoad();
+    void start();
 
-    void onUnload();
+    void end();
 
     void setNextPhase(Phase phase);
 
@@ -19,4 +19,6 @@ public interface Phase {
     Optional<Phase> getPreviousPhase();
 
     Scoreboard getScoreboard();
+
+    boolean joinEnabled();
 }

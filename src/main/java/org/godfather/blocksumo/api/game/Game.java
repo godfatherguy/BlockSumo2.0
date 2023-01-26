@@ -7,19 +7,20 @@ import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
 
 import java.util.UUID;
 
-public abstract class Game {
+public class Game {
 
     protected final Bootstrap bootstrap;
     protected final UUID uuid;
     private GamePhase actualPhase;
 
-    public Game(Bootstrap bootstrap) {
+    public Game(Bootstrap bootstrap, GamePhase gamePhase) {
         this.bootstrap = bootstrap;
         uuid = UUID.randomUUID();
+        actualPhase = gamePhase;
     }
 
     public void nextPhase() {
-        actualPhase.onUnload();
+        actualPhase.end();
 
         if (actualPhase.getNextPhase().isEmpty()) {
             Bukkit.shutdown();
@@ -27,7 +28,7 @@ public abstract class Game {
         }
 
         this.actualPhase = (GamePhase) actualPhase.getNextPhase().get();
-        actualPhase.onLoad();
+        actualPhase.start();
     }
 
     public GamePhase getActualPhase() {

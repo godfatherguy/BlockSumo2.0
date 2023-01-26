@@ -6,10 +6,10 @@ import org.godfather.blocksumo.api.Bootstrap;
 
 public abstract class Manager implements Listener {
 
-    protected final Bootstrap minigame;
+    protected final Bootstrap bootstrap;
 
-    protected Manager(Bootstrap minigame) {
-        this.minigame = minigame;
+    protected Manager(Bootstrap bootstrap) {
+        this.bootstrap = bootstrap;
     }
 
     protected abstract void onLoad();
@@ -17,7 +17,7 @@ public abstract class Manager implements Listener {
     protected abstract void onUnload();
 
     public final void load() {
-        minigame.getPlugin().getServer().getPluginManager().registerEvents(this, minigame.getPlugin());
+        bootstrap.getPlugin().getServer().getPluginManager().registerEvents(this, bootstrap.getPlugin());
         onLoad();
     }
 
@@ -27,6 +27,6 @@ public abstract class Manager implements Listener {
     }
 
     public Bootstrap getBootstrap() {
-        return minigame;
+        return bootstrap;
     }
 }

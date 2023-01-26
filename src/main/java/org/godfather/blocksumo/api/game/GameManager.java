@@ -5,7 +5,7 @@ import org.godfather.blocksumo.api.server.manager.Manager;
 
 public abstract class GameManager extends Manager {
 
-    private Game runningGame;
+    protected Game runningGame;
 
     protected GameManager(Bootstrap bootstrap) {
         super(bootstrap);
