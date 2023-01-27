@@ -1,0 +1,4 @@
+name: BlockSumo
+author: godfather
+main: org.godfather.blocksumo.BlockSumoPlugin
+version: 1.0.0-SNAPSHOT
