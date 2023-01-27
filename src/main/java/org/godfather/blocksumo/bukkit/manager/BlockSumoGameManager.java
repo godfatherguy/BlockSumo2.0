@@ -21,6 +21,6 @@ public final class BlockSumoGameManager extends GameManager {
 
     @Override
     protected void onUnload() {
-
+        runningGame = null;
     }
 }
