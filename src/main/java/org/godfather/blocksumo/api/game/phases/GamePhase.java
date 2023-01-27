@@ -4,14 +4,13 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.Game;
-
 import java.util.Optional;
 
 public abstract class GamePhase implements Listener, Phase {
 
     protected Game parentGame;
     protected final Bootstrap bootstrap;
-    private Phase previousPhase;
+    protected Phase previousPhase;
     protected Phase nextPhase;
     protected boolean running = false;
 
@@ -36,9 +35,9 @@ public abstract class GamePhase implements Listener, Phase {
         return Optional.ofNullable(previousPhase);
     }
 
-    protected abstract void onLoad();
+    public abstract void onLoad();
 
-    protected abstract void onUnload();
+    public abstract void onUnload();
 
     public final void start() {
         running = true;
@@ -52,8 +51,6 @@ public abstract class GamePhase implements Listener, Phase {
     public final void end() {
         running = false;
         HandlerList.unregisterAll(this);
-
-        onUnload();
     }
 
     public boolean isRunning() {

@@ -21,6 +21,7 @@ public class Game {
 
     public void nextPhase() {
         actualPhase.end();
+        actualPhase.onUnload();
 
         if (actualPhase.getNextPhase().isEmpty()) {
             Bukkit.shutdown();
@@ -28,6 +29,16 @@ public class Game {
         }
 
         this.actualPhase = (GamePhase) actualPhase.getNextPhase().get();
+        actualPhase.start();
+    }
+
+    public void previousPhase() {
+        if(actualPhase.getPreviousPhase().isEmpty())
+            return;
+
+        actualPhase.end();
+        this.actualPhase = (GamePhase) actualPhase.getPreviousPhase().get();
+
         actualPhase.start();
     }
 

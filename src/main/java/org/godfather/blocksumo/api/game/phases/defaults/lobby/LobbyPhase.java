@@ -13,10 +13,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
-import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.phases.GamePhase;
@@ -36,7 +33,7 @@ public final class LobbyPhase extends GamePhase {
 
     }
 
-    protected void onUnload() {
+    public void onUnload() {
 
     }
 
@@ -48,6 +45,14 @@ public final class LobbyPhase extends GamePhase {
     @Override
     public boolean joinEnabled() {
         return true;
+    }
+
+    public int getRequiredPlayers() {
+        return requiredPlayers;
+    }
+
+    public int getMaxPlayers() {
+        return maxPlayers;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -170,5 +175,12 @@ public final class LobbyPhase extends GamePhase {
 
         event.setCancelled(true);
         //todo portare il giocatore allo spawn
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+
+        event.setQuitMessage(ChatColor.GRAY + player.getName() + " §eè uscito!");
     }
 }
