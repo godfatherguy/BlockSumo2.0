@@ -45,6 +45,10 @@ public class StartingPhase extends GamePhase {
                     parentGame.nextPhase();
 
                     Utils.sendMessageAll(MessageType.CHAT, "§aLa partita è iniziata!");
+                    if(bootstrap.getDescription().isPresent()) {
+                        Utils.sendTitleAll(p -> "§a" + bootstrap.getDescription().get().getMinigameName().toUpperCase().replace(" ", ""),
+                                p -> "§aPartita iniziata!", 0, 1, 0);
+                    }
                     Utils.sendTitleAll(p -> "", p -> "", 0, 1, 0);
                 })
                 .start(bootstrap);

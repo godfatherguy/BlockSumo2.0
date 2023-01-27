@@ -18,8 +18,9 @@ public class BlockSumoDescription implements GameDescription {
     public List<String> getMinigameDescription() {
         List<String> description = Lists.newArrayList();
         description.add("Muoviti tra le piattaforme, spingi i tuoi nemici,");
-        description.add("sopravvivi ai cumuli di blocchi e guadagnati il");
-        description.add("titolo di miglior Rikishi della storia!");
+        description.add("sopravvivi ai cumuli di blocchi e guadagnati");
+        description.add("il titolo di miglior Rikishi della storia!");
+        description.add("Se perdi tutte le tue vite verrai eliminato.");
         return description;
     }
 
