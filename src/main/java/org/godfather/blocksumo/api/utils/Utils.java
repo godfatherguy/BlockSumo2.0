@@ -1,6 +1,8 @@
 package org.godfather.blocksumo.api.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.godfather.blocksumo.api.utils.messages.DefaultFontInfo;
 import org.godfather.blocksumo.api.utils.messages.MessageBuilder;
@@ -35,6 +37,14 @@ public final class Utils {
 
     public static void sendTitleAll(Function<Player, String> title, Function<Player, String> subTitle, int in, int stay, int out) {
         Bukkit.getOnlinePlayers().forEach(player -> Reflection.sendTitle(player, title.apply(player), subTitle.apply(player), in, stay, out));
+    }
+
+    public static void playSound(Player player, Sound sound, float v, float p) {
+        player.playSound(player.getLocation(), sound, v, p);
+    }
+
+    public static void playSoundAll(Sound sound, float v, float p) {
+        Bukkit.getOnlinePlayers().forEach(player -> playSound(player, sound, v, p));
     }
 
     public static String centeredMessage(String message) {
@@ -113,5 +123,11 @@ public final class Utils {
             finalList.add(obj);
         }
         return finalList;
+    }
+
+    public static String getFormattedTime(int time, ChatColor def) {
+        if (time <= 3) return ChatColor.RED + String.valueOf(time);
+        else if (time <= 10) return ChatColor.GOLD + String.valueOf(time);
+        else return def + String.valueOf(time);
     }
 }

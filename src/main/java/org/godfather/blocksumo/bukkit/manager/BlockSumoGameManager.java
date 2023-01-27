@@ -4,6 +4,7 @@ import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.Game;
 import org.godfather.blocksumo.api.game.GameManager;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.LobbyPhase;
+import org.godfather.blocksumo.bukkit.phases.StartingPhase;
 
 public final class BlockSumoGameManager extends GameManager {
 
@@ -16,7 +17,7 @@ public final class BlockSumoGameManager extends GameManager {
         runningGame = new Game(bootstrap, new LobbyPhase(bootstrap));
         runningGame.getActualPhase().setParentGame(runningGame);
         runningGame.getActualPhase().start();
-        //todo set next phase
+        runningGame.getActualPhase().setNextPhase(new StartingPhase(bootstrap));
     }
 
     @Override
