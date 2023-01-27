@@ -148,13 +148,13 @@ public final class LobbyPhase extends GamePhase {
 
         player.setAllowFlight(player.isOp() || player.hasPermission("playground.admin"));
 
-        event.setJoinMessage(ChatColor.GRAY + player.getName() + " §eè entrato (§a" + Bukkit.getOnlinePlayers() + "§e/§a" + maxPlayers);
+        event.setJoinMessage(ChatColor.GRAY + player.getName() + " §eè entrato (§a" + Bukkit.getOnlinePlayers().size() + "§e/§a" + maxPlayers + "§e)!");
         //todo setup items
     }
 
     @EventHandler
     public void onSpawn(PlayerSpawnLocationEvent event) {
-        event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0, 0, 0));
+        event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0, 77, 0));
 
         //todo cambiare spawn
     }
@@ -174,7 +174,8 @@ public final class LobbyPhase extends GamePhase {
             return;
 
         event.setCancelled(true);
-        //todo portare il giocatore allo spawn
+        player.teleport(new Location(Bukkit.getWorld("world"), 0, 77, 0));
+        //todo cambiare spawn
     }
 
     @EventHandler
