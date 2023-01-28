@@ -129,14 +129,6 @@ public class StartingPhase extends GamePhase {
         event.setCancelled(true);
     }
 
-    @EventHandler
-    public void onFoodLevel(FoodLevelChangeEvent event) {
-        if (event.getEntity() instanceof Player player)
-            player.setFoodLevel(20);
-
-        event.setCancelled(true);
-    }
-
     @EventHandler(priority = EventPriority.LOW)
     public void onInventoryClick(InventoryClickEvent event) {
         event.setCancelled(true);

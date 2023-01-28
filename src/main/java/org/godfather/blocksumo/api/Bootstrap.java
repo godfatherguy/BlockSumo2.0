@@ -1,8 +1,10 @@
 package org.godfather.blocksumo.api;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Difficulty;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -39,15 +41,6 @@ public abstract class Bootstrap {
         fastEventsManager = new FastEventsManager(this);
         fastEventsManager.register();
 
-        registerVariable(ServerFastEvent.builder(WorldLoadEvent.class)
-                .consumer(event -> {
-                    if (event.getWorld() != null) {
-                        event.getWorld().setAutoSave(false);
-                        event.getWorld().setTime(1000);
-                        event.getWorld().setGameRuleValue("doDaylightCycle", "false");
-                    }
-                }).priority(EventPriority.MONITOR).build());
-
         registerVariable(ServerFastEvent.builder(PlayerInteractEvent.class)
                 .consumer(event -> {
                     if(event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK)
@@ -61,6 +54,10 @@ public abstract class Bootstrap {
 
                     event.setCancelled(true);
                 }).priority(EventPriority.NORMAL).build());
+
+        registerVariable(ServerFastEvent.builder(FoodLevelChangeEvent.class)
+                .consumer(event -> event.setCancelled(true))
+                .priority(EventPriority.HIGH).build());
 
         loaded = true;
 

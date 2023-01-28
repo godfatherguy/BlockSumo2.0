@@ -1,9 +1,6 @@
 package org.godfather.blocksumo.api.game.phases.defaults.lobby;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -106,11 +103,6 @@ public final class LobbyPhase extends GamePhase {
         event.setCancelled(true);
     }
 
-    @EventHandler
-    public void onFoodLevel(FoodLevelChangeEvent event) {
-        event.setCancelled(true);
-    }
-
     @EventHandler(priority = EventPriority.LOW)
     public void onInventoryClick(InventoryClickEvent event) {
         event.setCancelled(true);
@@ -140,7 +132,8 @@ public final class LobbyPhase extends GamePhase {
         player.setHealth(player.getMaxHealth());
         player.setLevel(0);
         player.setExp(0);
-        player.setFoodLevel(20);
+        player.setFoodLevel(40);
+        player.setSaturation(100);
         player.setGameMode(GameMode.ADVENTURE);
         player.getInventory().clear();
         player.getInventory().setArmorContents(null);
@@ -156,6 +149,9 @@ public final class LobbyPhase extends GamePhase {
     @EventHandler
     public void onSpawn(PlayerSpawnLocationEvent event) {
         event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0, 79, 0));
+
+        if (event.getSpawnLocation().getWorld().getDifficulty() != Difficulty.PEACEFUL)
+            event.getSpawnLocation().getWorld().setDifficulty(Difficulty.PEACEFUL);
 
         //todo cambiare spawn
     }
