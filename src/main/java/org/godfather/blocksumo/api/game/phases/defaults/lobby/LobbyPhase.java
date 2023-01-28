@@ -108,9 +108,6 @@ public final class LobbyPhase extends GamePhase {
 
     @EventHandler
     public void onFoodLevel(FoodLevelChangeEvent event) {
-        if (event.getEntity() instanceof Player player)
-            player.setFoodLevel(20);
-
         event.setCancelled(true);
     }
 
