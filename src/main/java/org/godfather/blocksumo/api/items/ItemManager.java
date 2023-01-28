@@ -8,10 +8,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class ItemManager {
 
-    private final static Map<ItemBuilder, Interactable> interactables = new ConcurrentHashMap<>();
+    private final static Map<String, Interactable> interactables = new ConcurrentHashMap<>();
 
-    public static void registerInteractable(ItemBuilder builder, Interactable interactable) {
-        interactables.put(builder, interactable);
+    public static void registerInteractable(String name, Interactable interactable) {
+        if (!interactables.containsKey(name))
+            interactables.put(name, interactable);
     }
 
     public static void unregister() {
@@ -19,6 +20,15 @@ public final class ItemManager {
     }
 
     public static Optional<Interactable> getInteractable(ItemStack itemStack) {
-        return Optional.ofNullable((Interactable) interactables.keySet().stream().filter(builder -> builder.get().equals(itemStack)).toArray()[0]);
+        Interactable finalinter = null;
+        for (Interactable interactable : interactables.values()) {
+            if (!interactable.getBuilder().get().equals(itemStack)) continue;
+            finalinter = interactable;
+        }
+        return Optional.ofNullable(finalinter);
+    }
+
+    public static Optional<Interactable> getInteractable(String name) {
+        return Optional.ofNullable(interactables.get(name));
     }
 }

@@ -113,7 +113,7 @@ public abstract class Bootstrap {
         return Optional.ofNullable(description);
     }
 
-    public void setDescription(GameDescription description) {
+    protected void setDescription(GameDescription description) {
         this.description = description;
     }
 }
