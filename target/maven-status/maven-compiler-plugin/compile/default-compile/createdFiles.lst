@@ -31,11 +31,13 @@ org\godfather\blocksumo\api\server\runnables\utils\Countdown.class
 org\godfather\blocksumo\api\server\events\FastEvent.class
 org\godfather\blocksumo\api\utils\Utils.class
 org\godfather\blocksumo\api\utils\messages\DefaultFontInfo.class
+org\godfather\blocksumo\api\game\events\InteractableInteractEvent.class
 org\godfather\blocksumo\api\utils\messages\MessageFlag.class
 org\godfather\blocksumo\api\items\ItemBuilder.class
 org\godfather\blocksumo\api\utils\nms\Reflection.class
 org\godfather\blocksumo\api\server\runnables\task\MinigameTask.class
 org\godfather\blocksumo\api\server\manager\Manager.class
+org\godfather\blocksumo\api\game\phases\defaults\lobby\items\ItemBack.class
 org\godfather\blocksumo\api\server\events\ServerFastEvent$FastEventBuilder.class
 org\godfather\blocksumo\BlockSumoBootstrap.class
 org\godfather\blocksumo\bukkit\BlockSumoDescription.class
