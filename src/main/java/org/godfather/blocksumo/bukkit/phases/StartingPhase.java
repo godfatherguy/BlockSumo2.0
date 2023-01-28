@@ -174,6 +174,17 @@ public class StartingPhase extends GamePhase {
 
         event.setQuitMessage(ChatColor.GRAY + player.getName() + " §eè uscito!");
 
+        if (parentGame.getHoster().isPresent() && parentGame.getHoster().get().getUniqueId().equals(player.getUniqueId())) {
+
+            parentGame.setHoster(null);
+            if (Bukkit.getOnlinePlayers().size() > 0) {
+                Player newHoster = Utils.getRandomInList(Bukkit.getOnlinePlayers().stream().toList());
+
+                if (newHoster != null)
+                    parentGame.setHoster(newHoster);
+            }
+        }
+
         if(Bukkit.getOnlinePlayers().size() >= ((LobbyPhase) previousPhase).getRequiredPlayers())
             return;
 

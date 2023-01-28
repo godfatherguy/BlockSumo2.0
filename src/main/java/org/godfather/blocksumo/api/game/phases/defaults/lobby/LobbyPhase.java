@@ -15,8 +15,10 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.phases.GamePhase;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemBack;
+import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemSettings;
 import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
+import org.godfather.blocksumo.api.utils.Utils;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
 public final class LobbyPhase extends GamePhase {
@@ -30,6 +32,7 @@ public final class LobbyPhase extends GamePhase {
 
     public void onLoad() {
         ItemManager.registerInteractable("item-back", new ItemBack());
+        ItemManager.registerInteractable("item-settings", new ItemSettings());
     }
 
     public void onUnload() {
@@ -119,10 +122,8 @@ public final class LobbyPhase extends GamePhase {
             return;
         }
 
-        if (Bukkit.getOnlinePlayers().size() + 1 <= requiredPlayers)
-            return;
-
-        parentGame.nextPhase();
+        if (Bukkit.getOnlinePlayers().size() + 1 >= requiredPlayers)
+            parentGame.nextPhase();
     }
 
     @EventHandler
@@ -141,6 +142,12 @@ public final class LobbyPhase extends GamePhase {
         player.setAllowFlight(player.isOp() || player.hasPermission("playground.admin"));
 
         event.setJoinMessage(ChatColor.GRAY + player.getName() + " §eè entrato (§a" + Bukkit.getOnlinePlayers().size() + "§e/§a" + maxPlayers + "§e)!");
+
+        if (Bukkit.getOnlinePlayers().size() == 1 || parentGame.getHoster().isEmpty()) {
+
+            if (parentGame.isHostable() || (player.isOp() || player.hasPermission("playground.admin")))
+                parentGame.setHoster(player);
+        }
 
         if (ItemManager.getInteractable("item-back").isPresent())
             player.getInventory().setItem(8, ItemManager.getInteractable("item-back").get().getBuilder().get());
@@ -180,5 +187,20 @@ public final class LobbyPhase extends GamePhase {
         Player player = event.getPlayer();
 
         event.setQuitMessage(ChatColor.GRAY + player.getName() + " §eè uscito!");
+
+        if (parentGame.getHoster().isEmpty())
+            return;
+
+        if (!parentGame.getHoster().get().getUniqueId().equals(player.getUniqueId()))
+            return;
+
+        parentGame.setHoster(null);
+
+        if (Bukkit.getOnlinePlayers().size() > 0) {
+            Player newHoster = Utils.getRandomInList(Bukkit.getOnlinePlayers().stream().toList());
+
+            if (newHoster != null)
+                parentGame.setHoster(newHoster);
+        }
     }
 }

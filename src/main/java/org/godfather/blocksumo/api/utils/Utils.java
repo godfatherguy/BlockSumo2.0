@@ -108,7 +108,7 @@ public final class Utils {
         });
     }
 
-    public static <T> T getRandomInList(ArrayList<T> list) {
+    public static <T> T getRandomInList(List<T> list) {
         return list.get(new Random().nextInt(list.size()));
     }
 

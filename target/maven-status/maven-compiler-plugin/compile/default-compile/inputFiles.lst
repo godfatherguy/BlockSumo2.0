@@ -10,6 +10,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\Scoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\DefaultFontInfo.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\manager\Manager.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\lobby\items\ItemSettings.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\MinigameTask.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\Phase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\BlockSumoDescription.java
@@ -19,11 +20,13 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\defaults\RepeatedTask.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\Pausable.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\MessageBuilder.java
-C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\events\InteractableInteractEvent.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\map\GameMap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\lobby\LobbyPhase.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\custom\InteractableInteractEvent.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\manager\BlockSumoGameManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\Game.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\GameDescription.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\map\MapManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\FastEventsManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\nms\Reflection.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\MinigamePlugin.java

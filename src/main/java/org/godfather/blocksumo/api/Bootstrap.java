@@ -1,16 +1,14 @@
 package org.godfather.blocksumo.api;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Difficulty;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.godfather.blocksumo.api.game.GameDescription;
 import org.godfather.blocksumo.api.game.GameManager;
-import org.godfather.blocksumo.api.game.events.InteractableInteractEvent;
+import org.godfather.blocksumo.api.server.events.custom.InteractableInteractEvent;
 import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.server.events.FastEvent;
 import org.godfather.blocksumo.api.server.events.FastEventsManager;

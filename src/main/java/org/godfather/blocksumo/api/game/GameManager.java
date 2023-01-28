@@ -2,7 +2,7 @@ package org.godfather.blocksumo.api.game;
 
 import org.bukkit.event.EventHandler;
 import org.godfather.blocksumo.api.Bootstrap;
-import org.godfather.blocksumo.api.game.events.InteractableInteractEvent;
+import org.godfather.blocksumo.api.server.events.custom.InteractableInteractEvent;
 import org.godfather.blocksumo.api.server.manager.Manager;
 
 public abstract class GameManager extends Manager {

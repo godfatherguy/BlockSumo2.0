@@ -1,4 +1,4 @@
-package org.godfather.blocksumo.api.game.events;
+package org.godfather.blocksumo.api.server.events.custom;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
