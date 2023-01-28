@@ -154,7 +154,7 @@ public final class LobbyPhase extends GamePhase {
 
     @EventHandler
     public void onSpawn(PlayerSpawnLocationEvent event) {
-        event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0, 77, 0));
+        event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0, 79, 0));
 
         //todo cambiare spawn
     }
@@ -174,7 +174,7 @@ public final class LobbyPhase extends GamePhase {
             return;
 
         event.setCancelled(true);
-        player.teleport(new Location(Bukkit.getWorld("world"), 0, 77, 0));
+        player.teleport(new Location(Bukkit.getWorld("world"), 0, 79, 0));
         //todo cambiare spawn
     }
 
