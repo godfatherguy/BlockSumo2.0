@@ -6,6 +6,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.godfather.blocksumo.api.config.ConfigManager;
 import org.godfather.blocksumo.api.game.GameDescription;
 import org.godfather.blocksumo.api.game.GameManager;
 import org.godfather.blocksumo.api.game.map.MapManager;
@@ -25,6 +26,7 @@ public abstract class Bootstrap {
     private JavaPlugin plugin;
     private boolean loaded = false;
     private FastEventsManager fastEventsManager;
+    private ConfigManager configManager;
     private MapManager mapManager;
     private GameManager gameManager;
     private GameDescription description;
@@ -76,6 +78,7 @@ public abstract class Bootstrap {
 
     public final void unload() {
         fastEventsManager.unregister();
+        configManager.unload();
         mapManager.unload();
         gameManager.unload();
         loaded = false;
@@ -104,13 +107,22 @@ public abstract class Bootstrap {
         fastEventsManager.registerEvent(fastEvent);
     }
 
+    public void setConfigManager(ConfigManager configManager) {
+        this.configManager = configManager;
+        this.configManager.load();
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
+    }
+
     public MapManager getMapManager() {
         return mapManager;
     }
 
     public void setGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
-        gameManager.load();
+        this.gameManager.load();
     }
 
     public GameManager getGameManager() {
