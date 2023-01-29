@@ -18,6 +18,7 @@ import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemBack;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemSettings;
 import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
+import org.godfather.blocksumo.api.utils.MapUtils;
 import org.godfather.blocksumo.api.utils.Utils;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
@@ -155,12 +156,10 @@ public final class LobbyPhase extends GamePhase {
 
     @EventHandler
     public void onSpawn(PlayerSpawnLocationEvent event) {
-        event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0.5, 80, 0.5));
-
         if (event.getSpawnLocation().getWorld().getDifficulty() != Difficulty.PEACEFUL)
             event.getSpawnLocation().getWorld().setDifficulty(Difficulty.PEACEFUL);
 
-        //todo cambiare spawn
+        event.setSpawnLocation(MapUtils.getLocation(bootstrap, "lobby"));
     }
 
     @EventHandler
@@ -178,8 +177,7 @@ public final class LobbyPhase extends GamePhase {
             return;
 
         event.setCancelled(true);
-        Utils.teleport(player, new Location(Bukkit.getWorld("world"), 0.5, 80, 0.5));
-        //todo cambiare spawn
+        Utils.teleport(player, MapUtils.getLocation(bootstrap, "lobby"));
     }
 
     @EventHandler

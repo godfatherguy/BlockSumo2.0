@@ -38,8 +38,12 @@ org\godfather\blocksumo\api\game\phases\GamePhase.class
 org\godfather\blocksumo\bukkit\BlockSumoGame.class
 org\godfather\blocksumo\bukkit\manager\BlockSumoGameManager.class
 org\godfather\blocksumo\api\game\phases\Phase.class
+org\godfather\blocksumo\bukkit\manager\BlockSumoConfigManager.class
 org\godfather\blocksumo\api\utils\MapUtils.class
 org\godfather\blocksumo\api\Bootstrap.class
+org\godfather\blocksumo\api\config\ConfigManager.class
+org\godfather\blocksumo\api\config\MinigameConfig.class
+org\godfather\blocksumo\api\config\Config.class
 org\godfather\blocksumo\api\utils\messages\DefaultFontInfo.class
 org\godfather\blocksumo\api\utils\messages\MessageFlag.class
 org\godfather\blocksumo\api\items\ItemBuilder.class

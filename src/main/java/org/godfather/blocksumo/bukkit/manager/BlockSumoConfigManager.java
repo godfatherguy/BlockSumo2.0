@@ -11,7 +11,7 @@ public final class BlockSumoConfigManager extends ConfigManager {
 
     @Override
     protected void onLoad() {
-        createConfig("maps.yml");
+        createConfig("maps");
     }
 
     @Override
