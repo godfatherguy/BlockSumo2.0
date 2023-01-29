@@ -48,9 +48,9 @@ public abstract class GamePhase implements Listener, Phase {
 
         bootstrap.getPlugin().getServer().getPluginManager().registerEvents(this, bootstrap.getPlugin());
 
-        bootstrap.getScoreboardManager().startScoreboard(scoreboard);
-
         onLoad();
+
+        bootstrap.getScoreboardManager().startScoreboard(scoreboard);
     }
 
     public final void end() {

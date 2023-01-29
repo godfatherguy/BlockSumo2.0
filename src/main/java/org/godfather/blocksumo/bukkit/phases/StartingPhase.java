@@ -22,6 +22,7 @@ import org.godfather.blocksumo.api.game.phases.defaults.lobby.LobbyPhase;
 import org.godfather.blocksumo.api.server.runnables.utils.Countdown;
 import org.godfather.blocksumo.api.utils.Utils;
 import org.godfather.blocksumo.api.utils.messages.MessageType;
+import org.godfather.blocksumo.bukkit.phases.scoreboards.StartingScoreboard;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
 public class StartingPhase extends GamePhase {
@@ -53,6 +54,8 @@ public class StartingPhase extends GamePhase {
                     Utils.sendTitleAll(p -> "", p -> "", 0, 1, 0);
                 })
                 .start(bootstrap);
+
+        setScoreboard(new StartingScoreboard(bootstrap));
     }
 
     @Override
@@ -76,6 +79,10 @@ public class StartingPhase extends GamePhase {
 
         Utils.sendTitleAll(p -> Utils.getFormattedTime(countdown.getActualTime(), ChatColor.YELLOW), p -> "", 0, 25, 0);
         Utils.playSoundAll(Sound.WOOD_CLICK, 1, 1.6F);
+    }
+
+    public int getTime() {
+        return countdown.getActualTime();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////

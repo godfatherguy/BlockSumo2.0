@@ -12,6 +12,7 @@ org\godfather\blocksumo\bukkit\phases\StartingPhase.class
 org\godfather\blocksumo\api\game\map\GameMap.class
 org\godfather\blocksumo\api\server\runnables\RunnableManager.class
 org\godfather\blocksumo\api\utils\WorldUtils.class
+org\godfather\blocksumo\api\game\player\PlayerManager.class
 org\godfather\blocksumo\api\server\runnables\task\defaults\RepeatedTask.class
 org\godfather\blocksumo\api\server\scoreboard\components\ScoreboardLine.class
 org\godfather\blocksumo\api\utils\FileUtil.class
@@ -34,6 +35,7 @@ org\godfather\blocksumo\api\game\phases\defaults\lobby\LobbyPhase.class
 org\godfather\blocksumo\api\game\map\MinigameMap.class
 org\godfather\blocksumo\api\game\map\MapManager.class
 org\godfather\blocksumo\api\utils\messages\MessageBuilder.class
+org\godfather\blocksumo\api\game\player\GamePlayer.class
 org\godfather\blocksumo\api\utils\messages\MessageType.class
 org\godfather\blocksumo\api\game\phases\defaults\lobby\items\ItemSettings.class
 org\godfather\blocksumo\api\server\runnables\task\AbstractTask.class
@@ -43,7 +45,9 @@ org\godfather\blocksumo\bukkit\BlockSumoGame.class
 org\godfather\blocksumo\bukkit\phases\scoreboards\LobbyScoreboard.class
 org\godfather\blocksumo\bukkit\manager\BlockSumoGameManager.class
 org\godfather\blocksumo\api\game\phases\Phase.class
+org\godfather\blocksumo\bukkit\player\BlockSumoPlayerManager.class
 org\godfather\blocksumo\bukkit\manager\BlockSumoConfigManager.class
+org\godfather\blocksumo\bukkit\player\BlockSumoPlayer.class
 org\godfather\blocksumo\api\utils\MapUtils.class
 org\godfather\blocksumo\api\Bootstrap.class
 org\godfather\blocksumo\api\config\ConfigManager.class
