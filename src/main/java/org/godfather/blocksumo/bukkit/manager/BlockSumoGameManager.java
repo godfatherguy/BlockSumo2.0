@@ -5,6 +5,7 @@ import org.godfather.blocksumo.api.game.Game;
 import org.godfather.blocksumo.api.game.GameManager;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.LobbyPhase;
 import org.godfather.blocksumo.bukkit.phases.StartingPhase;
+import org.godfather.blocksumo.bukkit.phases.scoreboards.LobbyScoreboard;
 
 public final class BlockSumoGameManager extends GameManager {
 
@@ -16,6 +17,7 @@ public final class BlockSumoGameManager extends GameManager {
     protected void onLoad() {
         runningGame = new Game(bootstrap, new LobbyPhase(bootstrap));
         runningGame.getActualPhase().setParentGame(runningGame);
+        runningGame.getActualPhase().setScoreboard(new LobbyScoreboard(bootstrap));
         runningGame.getActualPhase().start();
         runningGame.getActualPhase().setNextPhase(new StartingPhase(bootstrap));
     }

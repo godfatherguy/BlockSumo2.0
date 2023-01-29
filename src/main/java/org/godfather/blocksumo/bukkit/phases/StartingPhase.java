@@ -20,7 +20,6 @@ import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.phases.GamePhase;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.LobbyPhase;
 import org.godfather.blocksumo.api.server.runnables.utils.Countdown;
-import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
 import org.godfather.blocksumo.api.utils.Utils;
 import org.godfather.blocksumo.api.utils.messages.MessageType;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
@@ -60,11 +59,6 @@ public class StartingPhase extends GamePhase {
     public void onUnload() {
         countdown.cancel();
         countdown = null;
-    }
-
-    @Override
-    public Scoreboard getScoreboard() {
-        return null;
     }
 
     @Override

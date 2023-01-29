@@ -19,15 +19,14 @@ import org.godfather.blocksumo.api.game.phases.GamePhase;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemBack;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemSettings;
 import org.godfather.blocksumo.api.items.ItemManager;
-import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
 import org.godfather.blocksumo.api.utils.MapUtils;
 import org.godfather.blocksumo.api.utils.Utils;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
 public final class LobbyPhase extends GamePhase {
 
-    private final int requiredPlayers = 2;
-    private final int maxPlayers = 16;
+    public final static int requiredPlayers = 2;
+    public final static int maxPlayers = 16;
 
     public LobbyPhase(Bootstrap bootstrap) {
         super(bootstrap);
@@ -40,11 +39,6 @@ public final class LobbyPhase extends GamePhase {
 
     public void onUnload() {
 
-    }
-
-    @Override
-    public Scoreboard getScoreboard() {
-        return null;
     }
 
     @Override

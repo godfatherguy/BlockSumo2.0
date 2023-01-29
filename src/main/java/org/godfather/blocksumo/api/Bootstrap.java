@@ -16,6 +16,7 @@ import org.godfather.blocksumo.api.server.events.FastEvent;
 import org.godfather.blocksumo.api.server.events.FastEventsManager;
 import org.godfather.blocksumo.api.server.events.ServerFastEvent;
 import org.godfather.blocksumo.api.server.runnables.RunnableManager;
+import org.godfather.blocksumo.api.server.scoreboard.ScoreboardManager;
 
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -30,6 +31,7 @@ public abstract class Bootstrap {
     private MapManager mapManager;
     private GameManager gameManager;
     private GameDescription description;
+    private ScoreboardManager scoreboardManager;
 
     protected abstract void onLoad();
 
@@ -69,6 +71,9 @@ public abstract class Bootstrap {
         mapManager = new MapManager(this);
         mapManager.load();
 
+        scoreboardManager = new ScoreboardManager(this);
+        scoreboardManager.load();
+
         onLoad();
     }
 
@@ -81,6 +86,8 @@ public abstract class Bootstrap {
         configManager.unload();
         mapManager.unload();
         gameManager.unload();
+        scoreboardManager.unload();
+
         loaded = false;
 
         ItemManager.unregister();
@@ -127,6 +134,10 @@ public abstract class Bootstrap {
 
     public GameManager getGameManager() {
         return gameManager;
+    }
+
+    public ScoreboardManager getScoreboardManager() {
+        return scoreboardManager;
     }
 
     public Optional<GameDescription> getDescription() {

@@ -18,7 +18,7 @@ public interface Phase {
 
     Optional<Phase> getPreviousPhase();
 
-    Scoreboard getScoreboard();
+    void setScoreboard(Scoreboard scoreboard);
 
     boolean joinEnabled();
 }

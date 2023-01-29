@@ -2,6 +2,8 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\config\MinigameConfig.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\BlockSumoBootstrap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\defaults\DelayedTask.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\components\ScoreboardTask.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\PhaseScoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\FastEvent.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\GamePhase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\StartingPhase.java
@@ -15,6 +17,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\defaults\RepeatedTask.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\MessageBuilder.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\lobby\LobbyPhase.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\ScoreboardManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\map\MinigameMap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\custom\InteractableInteractEvent.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\manager\BlockSumoGameManager.java
@@ -34,6 +37,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\WorldUtils.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\ServerPhase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\manager\BlockSumoConfigManager.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\scoreboards\LobbyScoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\Scoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\MapUtils.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\manager\Manager.java
@@ -46,5 +50,6 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\MinigamePlugin.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\defaults\InstantTask.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\items\ItemManager.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\components\ScoreboardLine.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\Bootstrap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\MessageType.java

@@ -57,10 +57,6 @@ public class Game {
         return uuid;
     }
 
-    public Scoreboard getScoreboard() {
-        return actualPhase.getScoreboard();
-    }
-
     public boolean isHostable() {
         return hostable;
     }

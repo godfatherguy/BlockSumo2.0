@@ -4,6 +4,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.Game;
+import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
+
 import java.util.Optional;
 
 public abstract class GamePhase implements Listener, Phase {
@@ -13,6 +15,7 @@ public abstract class GamePhase implements Listener, Phase {
     protected Phase previousPhase;
     protected Phase nextPhase;
     protected boolean running = false;
+    private Scoreboard scoreboard;
 
     public GamePhase(Bootstrap bootstrap) {
         this.bootstrap = bootstrap;
@@ -45,6 +48,8 @@ public abstract class GamePhase implements Listener, Phase {
 
         bootstrap.getPlugin().getServer().getPluginManager().registerEvents(this, bootstrap.getPlugin());
 
+        bootstrap.getScoreboardManager().startScoreboard(scoreboard);
+
         onLoad();
     }
 
@@ -59,5 +64,10 @@ public abstract class GamePhase implements Listener, Phase {
 
     public void setParentGame(Game game) {
         parentGame = game;
+    }
+
+    @Override
+    public void setScoreboard(Scoreboard scoreboard) {
+        this.scoreboard = scoreboard;
     }
 }
