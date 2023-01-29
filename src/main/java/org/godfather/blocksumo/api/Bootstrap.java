@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.godfather.blocksumo.api.game.GameDescription;
 import org.godfather.blocksumo.api.game.GameManager;
+import org.godfather.blocksumo.api.game.map.MapManager;
 import org.godfather.blocksumo.api.server.events.custom.InteractableInteractEvent;
 import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.server.events.FastEvent;
@@ -24,6 +25,7 @@ public abstract class Bootstrap {
     private JavaPlugin plugin;
     private boolean loaded = false;
     private FastEventsManager fastEventsManager;
+    private MapManager mapManager;
     private GameManager gameManager;
     private GameDescription description;
 
@@ -61,6 +63,10 @@ public abstract class Bootstrap {
 
         RunnableManager.clear();
         ItemManager.unregister();
+
+        mapManager = new MapManager(this);
+        mapManager.load();
+
         onLoad();
     }
 
@@ -70,8 +76,11 @@ public abstract class Bootstrap {
 
     public final void unload() {
         fastEventsManager.unregister();
+        mapManager.unload();
         gameManager.unload();
         loaded = false;
+
+        ItemManager.unregister();
         onUnload();
     }
 
@@ -93,6 +102,10 @@ public abstract class Bootstrap {
 
     public void registerVariable(FastEvent<?> fastEvent) {
         fastEventsManager.registerEvent(fastEvent);
+    }
+
+    public MapManager getMapManager() {
+        return mapManager;
     }
 
     public void setGameManager(GameManager gameManager) {

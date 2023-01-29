@@ -1,0 +1,13 @@
+Mushroom:
+  lobby:
+    x: 0.5
+    y: 51
+    z: 0.5
+    yaw: 90
+    pitch: 0
+  spawn:
+    x: 1.5
+    y: 22
+    z: 0.5
+    yaw: -90
+    pitch: 0

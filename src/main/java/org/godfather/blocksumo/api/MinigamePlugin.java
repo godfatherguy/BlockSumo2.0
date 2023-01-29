@@ -17,6 +17,8 @@ public abstract class MinigamePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+
         minigame.load(this);
     }
 

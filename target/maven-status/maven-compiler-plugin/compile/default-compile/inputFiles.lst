@@ -9,6 +9,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\StartingPhase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\Scoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\DefaultFontInfo.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\MapUtils.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\manager\Manager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\lobby\items\ItemSettings.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\MinigameTask.java
@@ -22,6 +23,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\MessageBuilder.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\map\GameMap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\lobby\LobbyPhase.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\map\MinigameMap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\custom\InteractableInteractEvent.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\manager\BlockSumoGameManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\Game.java

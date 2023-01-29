@@ -155,7 +155,7 @@ public final class LobbyPhase extends GamePhase {
 
     @EventHandler
     public void onSpawn(PlayerSpawnLocationEvent event) {
-        event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0, 79, 0));
+        event.setSpawnLocation(new Location(Bukkit.getWorld("world"), 0.5, 80, 0.5));
 
         if (event.getSpawnLocation().getWorld().getDifficulty() != Difficulty.PEACEFUL)
             event.getSpawnLocation().getWorld().setDifficulty(Difficulty.PEACEFUL);
@@ -178,7 +178,7 @@ public final class LobbyPhase extends GamePhase {
             return;
 
         event.setCancelled(true);
-        player.teleport(new Location(Bukkit.getWorld("world"), 0, 79, 0));
+        Utils.teleport(player, new Location(Bukkit.getWorld("world"), 0.5, 80, 0.5));
         //todo cambiare spawn
     }
 

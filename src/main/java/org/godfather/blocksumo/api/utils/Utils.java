@@ -2,8 +2,10 @@ package org.godfather.blocksumo.api.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.godfather.blocksumo.api.utils.messages.DefaultFontInfo;
 import org.godfather.blocksumo.api.utils.messages.MessageBuilder;
 import org.godfather.blocksumo.api.utils.messages.MessageFlag;
@@ -129,5 +131,11 @@ public final class Utils {
         if (time <= 3) return ChatColor.RED + String.valueOf(time);
         else if (time <= 10) return ChatColor.GOLD + String.valueOf(time);
         else return def + String.valueOf(time);
+    }
+
+    public static void teleport(Player player, Location location) {
+        location.getChunk().load();
+
+        player.teleport(location, PlayerTeleportEvent.TeleportCause.PLUGIN);
     }
 }
