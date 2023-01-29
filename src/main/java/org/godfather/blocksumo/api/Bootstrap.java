@@ -12,6 +12,7 @@ import org.godfather.blocksumo.api.config.ConfigManager;
 import org.godfather.blocksumo.api.game.GameDescription;
 import org.godfather.blocksumo.api.game.GameManager;
 import org.godfather.blocksumo.api.game.map.MapManager;
+import org.godfather.blocksumo.api.game.player.PlayerManager;
 import org.godfather.blocksumo.api.server.events.custom.InteractableInteractEvent;
 import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.server.events.FastEvent;
@@ -32,6 +33,7 @@ public abstract class Bootstrap {
     private ConfigManager configManager;
     private MapManager mapManager;
     private GameManager gameManager;
+    private PlayerManager<?> playerManager;
     private GameDescription description;
     private ScoreboardManager scoreboardManager;
 
@@ -99,6 +101,7 @@ public abstract class Bootstrap {
         configManager.unload();
         mapManager.unload();
         gameManager.unload();
+        playerManager.unload();
         scoreboardManager.unload();
 
         loaded = false;
@@ -159,5 +162,13 @@ public abstract class Bootstrap {
 
     protected void setDescription(GameDescription description) {
         this.description = description;
+    }
+
+    public PlayerManager<?> getPlayerManager() {
+        return playerManager;
+    }
+
+    public void setPlayerManager(PlayerManager<?> playerManager) {
+        this.playerManager = playerManager;
     }
 }

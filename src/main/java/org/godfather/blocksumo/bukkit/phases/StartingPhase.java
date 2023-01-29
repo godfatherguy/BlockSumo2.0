@@ -59,6 +59,8 @@ public class StartingPhase extends GamePhase {
     public void onUnload() {
         countdown.cancel();
         countdown = null;
+
+        bootstrap.getPlayerManager().load();
     }
 
     @Override
