@@ -9,6 +9,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.hanging.HangingBreakEvent;
+import org.bukkit.event.hanging.HangingPlaceEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
@@ -194,5 +196,15 @@ public class StartingPhase extends GamePhase {
 
         Utils.sendMessageAll(MessageType.CHAT, "§cGiocatori insufficienti per iniziare la partita.");
         Utils.playSoundAll(Sound.VILLAGER_NO, 1, 1);
+    }
+
+    @EventHandler
+    public void onInteract(HangingBreakEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onInteract(HangingPlaceEvent event) {
+        event.setCancelled(true);
     }
 }

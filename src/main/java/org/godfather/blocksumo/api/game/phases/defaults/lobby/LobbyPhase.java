@@ -7,6 +7,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.hanging.HangingBreakEvent;
+import org.bukkit.event.hanging.HangingPlaceEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
@@ -200,5 +202,15 @@ public final class LobbyPhase extends GamePhase {
             if (newHoster != null)
                 parentGame.setHoster(newHoster);
         }
+    }
+
+    @EventHandler
+    public void onInteract(HangingBreakEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onInteract(HangingPlaceEvent event) {
+        event.setCancelled(true);
     }
 }
