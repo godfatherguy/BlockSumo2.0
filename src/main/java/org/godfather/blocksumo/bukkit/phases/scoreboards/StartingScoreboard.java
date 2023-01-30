@@ -7,7 +7,7 @@ import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.LobbyPhase;
 import org.godfather.blocksumo.api.server.scoreboard.PhaseScoreboard;
 import org.godfather.blocksumo.api.server.scoreboard.components.ScoreboardLine;
-import org.godfather.blocksumo.bukkit.phases.StartingPhase;
+import org.godfather.blocksumo.api.game.phases.defaults.starting.StartingPhase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

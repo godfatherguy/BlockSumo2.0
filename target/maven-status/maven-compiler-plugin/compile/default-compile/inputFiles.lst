@@ -6,7 +6,6 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\PhaseScoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\FastEvent.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\GamePhase.java
-C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\StartingPhase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\DefaultFontInfo.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\config\ConfigManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\lobby\items\ItemSettings.java
@@ -33,6 +32,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\FileUtil.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\RunnableManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\AbstractTask.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\commands\CommandSound.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\lobby\items\ItemBack.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\GameManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\WorldUtils.java
@@ -40,6 +40,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\manager\BlockSumoConfigManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\scoreboards\LobbyScoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\player\GamePlayer.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\starting\StartingPhase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\Scoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\MapUtils.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\manager\Manager.java

@@ -18,6 +18,7 @@ import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.phases.GamePhase;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemBack;
 import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemSettings;
+import org.godfather.blocksumo.api.game.phases.defaults.starting.StartingPhase;
 import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.utils.MapUtils;
 import org.godfather.blocksumo.api.utils.Utils;
@@ -34,6 +35,7 @@ public final class LobbyPhase extends GamePhase {
     }
 
     public void onLoad() {
+        setNextPhase(new StartingPhase(bootstrap));
         ItemManager.registerInteractable("item-back", new ItemBack());
         ItemManager.registerInteractable("item-settings", new ItemSettings());
     }

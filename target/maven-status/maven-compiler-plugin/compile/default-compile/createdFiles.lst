@@ -8,7 +8,6 @@ org\godfather\blocksumo\api\server\runnables\task\Pausable.class
 org\godfather\blocksumo\api\MinigamePlugin.class
 org\godfather\blocksumo\api\server\ServerPhase.class
 org\godfather\blocksumo\BlockSumoPlugin.class
-org\godfather\blocksumo\bukkit\phases\StartingPhase.class
 org\godfather\blocksumo\api\game\map\GameMap.class
 org\godfather\blocksumo\api\server\runnables\RunnableManager.class
 org\godfather\blocksumo\api\utils\WorldUtils.class
@@ -47,11 +46,13 @@ org\godfather\blocksumo\bukkit\phases\scoreboards\LobbyScoreboard.class
 org\godfather\blocksumo\bukkit\manager\BlockSumoGameManager.class
 org\godfather\blocksumo\api\game\phases\Phase.class
 org\godfather\blocksumo\bukkit\player\BlockSumoPlayerManager.class
+org\godfather\blocksumo\bukkit\commands\CommandSound.class
 org\godfather\blocksumo\bukkit\manager\BlockSumoConfigManager.class
 org\godfather\blocksumo\bukkit\player\BlockSumoPlayer.class
 org\godfather\blocksumo\api\utils\MapUtils.class
 org\godfather\blocksumo\api\Bootstrap.class
 org\godfather\blocksumo\api\config\ConfigManager.class
+org\godfather\blocksumo\api\game\phases\defaults\starting\StartingPhase.class
 org\godfather\blocksumo\api\config\MinigameConfig.class
 org\godfather\blocksumo\api\config\Config.class
 org\godfather\blocksumo\api\utils\messages\DefaultFontInfo.class

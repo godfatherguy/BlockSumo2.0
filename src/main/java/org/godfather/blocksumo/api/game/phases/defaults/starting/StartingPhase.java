@@ -1,4 +1,4 @@
-package org.godfather.blocksumo.bukkit.phases;
+package org.godfather.blocksumo.api.game.phases.defaults.starting;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -77,9 +77,7 @@ public class StartingPhase extends GamePhase {
         Utils.sendMessageAll(MessageType.CHAT, "§eLa partita inizia in "
                 + Utils.getFormattedTime(time, ChatColor.YELLOW) + ChatColor.YELLOW + timeName);
 
-        Bukkit.getOnlinePlayers().forEach(player -> {
-            Reflection.sendTitle(player, Utils.getFormattedTime(time, ChatColor.YELLOW), "", 0, 21, 0);
-        });
+        Bukkit.getOnlinePlayers().forEach(player -> Reflection.sendTitle(player, Utils.getFormattedTime(time, ChatColor.YELLOW), "", 0, 21, 0));
         Utils.playSoundAll(Sound.CLICK, 1, 1);
     }
 
