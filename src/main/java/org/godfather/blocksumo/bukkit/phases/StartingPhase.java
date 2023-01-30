@@ -37,13 +37,13 @@ public class StartingPhase extends GamePhase {
     public void onLoad() {
         countdown = Countdown.builder()
                 .startFrom(30)
-                .onStart(r -> alertPlayers())
+                .onStart(this::alertPlayers)
                 .onRepeat(r -> {
-                    if (countdown.getActualTime() <= 5 || countdown.getActualTime() % 10 == 0) {
-                        alertPlayers();
+                    if (r <= 5 || r % 10 == 0) {
+                        alertPlayers(r);
                     }
                 })
-                .onFinish(r -> {
+                .onFinish(() -> {
                     parentGame.nextPhase();
 
                     Utils.sendMessageAll(MessageType.CHAT, "§aLa partita è iniziata!");
@@ -63,7 +63,7 @@ public class StartingPhase extends GamePhase {
         countdown.cancel();
         countdown = null;
 
-        bootstrap.getPlayerManager().load();
+        //bootstrap.getPlayerManager().load();
     }
 
     @Override
@@ -71,13 +71,13 @@ public class StartingPhase extends GamePhase {
         return true;
     }
 
-    private void alertPlayers() {
-        String timeName = countdown.getActualTime() == 1 ? "secondo." : "secondi.";
+    private void alertPlayers(int time) {
+        String timeName = time == 1 ? " secondo." : " secondi.";
 
         Utils.sendMessageAll(MessageType.CHAT, "§eLa partita inizia in "
-                + Utils.getFormattedTime(countdown.getActualTime(), ChatColor.YELLOW) + ChatColor.YELLOW + timeName);
+                + Utils.getFormattedTime(time, ChatColor.YELLOW) + ChatColor.YELLOW + timeName);
 
-        Utils.sendTitleAll(p -> Utils.getFormattedTime(countdown.getActualTime(), ChatColor.YELLOW), p -> "", 0, 25, 0);
+        Utils.sendTitleAll(p -> Utils.getFormattedTime(time, ChatColor.YELLOW), p -> "", 0, 21, 0);
         Utils.playSoundAll(Sound.WOOD_CLICK, 1, 1.6F);
     }
 
@@ -190,15 +190,15 @@ public class StartingPhase extends GamePhase {
             }
         }
 
-        if(Bukkit.getOnlinePlayers().size() >= ((LobbyPhase) previousPhase).getRequiredPlayers())
+        if(Bukkit.getOnlinePlayers().size() - 1 >= ((LobbyPhase) previousPhase).getRequiredPlayers())
             return;
 
         parentGame.previousPhase();
-        countdown.cancel();
-        countdown = null;
 
-        Utils.sendMessageAll(MessageType.CHAT, "§cGiocatori insufficienti per iniziare la partita.");
-        Utils.playSoundAll(Sound.VILLAGER_NO, 1, 1);
+        Bukkit.getScheduler().runTaskLater(bootstrap.getPlugin(), () -> {
+            Utils.sendMessageAll(MessageType.CHAT, "§cGiocatori insufficienti per iniziare la partita.");
+            Utils.playSoundAll(Sound.VILLAGER_NO, 1, 1);
+        }, 2L);
     }
 
     @EventHandler

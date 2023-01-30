@@ -16,7 +16,7 @@ public final class Countdown extends BukkitRunnable implements Pausable {
 
         if (actualTime == 0) {
             if (Optional.ofNullable(finish).isPresent())
-                finish.accept(this);
+                finish.run();
 
             cancel();
             return;
@@ -25,14 +25,14 @@ public final class Countdown extends BukkitRunnable implements Pausable {
         actualTime--;
 
         if (Optional.ofNullable(repeat).isPresent())
-            repeat.accept(this);
+            repeat.accept(actualTime);
     }
 
     private int initialTime;
     private int actualTime;
-    private Consumer<Countdown> start;
-    private Consumer<Countdown> repeat;
-    private Consumer<Countdown> finish;
+    private Consumer<Integer> start;
+    private Consumer<Integer> repeat;
+    private Runnable finish;
     private boolean paused = false;
 
     public Countdown startFrom(int seconds) {
@@ -40,17 +40,17 @@ public final class Countdown extends BukkitRunnable implements Pausable {
         return this;
     }
 
-    public Countdown onStart(Consumer<Countdown> start) {
+    public Countdown onStart(Consumer<Integer> start) {
         this.start = start;
         return this;
     }
 
-    public Countdown onRepeat(Consumer<Countdown> repeat) {
+    public Countdown onRepeat(Consumer<Integer> repeat) {
         this.repeat = repeat;
         return this;
     }
 
-    public Countdown onFinish(Consumer<Countdown> finish) {
+    public Countdown onFinish(Runnable finish) {
         this.finish = finish;
         return this;
     }
@@ -59,7 +59,7 @@ public final class Countdown extends BukkitRunnable implements Pausable {
         runTaskTimer(bootstrap.getPlugin(), 1L, 20L);
 
         if (Optional.ofNullable(start).isPresent())
-            start.accept(this);
+            start.accept(actualTime);
 
         return this;
     }

@@ -37,6 +37,7 @@ public class Game {
 
         this.actualPhase = (GamePhase) actualPhase.getNextPhase().get();
         actualPhase.start();
+        Bootstrap.LOGGER.info("§9Passato alla fase successiva.");
     }
 
     public void previousPhase() {
@@ -44,6 +45,7 @@ public class Game {
             return;
 
         actualPhase.end();
+        actualPhase.onUnload();
         this.actualPhase = (GamePhase) actualPhase.getPreviousPhase().get();
 
         actualPhase.start();

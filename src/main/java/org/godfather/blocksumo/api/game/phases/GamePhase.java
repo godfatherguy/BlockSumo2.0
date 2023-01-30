@@ -12,8 +12,8 @@ public abstract class GamePhase implements Listener, Phase {
 
     protected Game parentGame;
     protected final Bootstrap bootstrap;
-    protected Phase previousPhase;
-    protected Phase nextPhase;
+    protected Phase previousPhase = null;
+    protected Phase nextPhase = null;
     protected boolean running = false;
     private Scoreboard scoreboard;
 
@@ -56,6 +56,7 @@ public abstract class GamePhase implements Listener, Phase {
     public final void end() {
         running = false;
         HandlerList.unregisterAll(this);
+        bootstrap.getScoreboardManager().clearScoreboard();
     }
 
     public boolean isRunning() {

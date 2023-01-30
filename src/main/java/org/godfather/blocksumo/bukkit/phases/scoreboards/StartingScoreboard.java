@@ -35,7 +35,7 @@ public class StartingScoreboard extends PhaseScoreboard {
         list.add(build(8, "§fMappa: §a" + bootstrap.getMapManager().getMap().getName()));
         list.add(build(7, "§fGiocatori: §a" + Bukkit.getOnlinePlayers().size() + "/" + LobbyPhase.maxPlayers));
         list.add(build(6, " "));
-        list.add(build(5, "§fInizio in §a " + ((StartingPhase) bootstrap.getGameManager().getRunningGame().getActualPhase()).getTime() + "s"));
+        list.add(build(5, "§fInizio in §a" + ((StartingPhase) bootstrap.getGameManager().getRunningGame().getActualPhase()).getTime() + "s"));
         list.add(build(4, "   "));
         list.add(build(3, "Versione: §a" + bootstrap.getPlugin().getDescription().getVersion()));
         list.add(build(2, "    "));

@@ -37,6 +37,7 @@ org\godfather\blocksumo\api\game\map\MapManager.class
 org\godfather\blocksumo\api\utils\messages\MessageBuilder.class
 org\godfather\blocksumo\api\game\player\GamePlayer.class
 org\godfather\blocksumo\api\utils\messages\MessageType.class
+org\godfather\blocksumo\bukkit\phases\scoreboards\StartingScoreboard.class
 org\godfather\blocksumo\api\game\phases\defaults\lobby\items\ItemSettings.class
 org\godfather\blocksumo\api\server\runnables\task\AbstractTask.class
 org\godfather\blocksumo\api\server\runnables\task\defaults\DelayedTask.class
