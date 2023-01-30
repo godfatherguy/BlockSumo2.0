@@ -21,6 +21,7 @@ import org.godfather.blocksumo.api.game.phases.defaults.lobby.items.ItemSettings
 import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.utils.MapUtils;
 import org.godfather.blocksumo.api.utils.Utils;
+import org.godfather.blocksumo.api.utils.messages.MessageType;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
 public final class LobbyPhase extends GamePhase {
@@ -120,7 +121,7 @@ public final class LobbyPhase extends GamePhase {
         }
 
         if (Bukkit.getOnlinePlayers().size() + 1 >= requiredPlayers)
-            parentGame.nextPhase();
+            Bukkit.getScheduler().runTaskLater(bootstrap.getPlugin(), () -> parentGame.nextPhase(), 2L);
     }
 
     @EventHandler
@@ -142,8 +143,10 @@ public final class LobbyPhase extends GamePhase {
 
         if (Bukkit.getOnlinePlayers().size() == 1 || parentGame.getHoster().isEmpty()) {
 
-            if (parentGame.isHostable() || (player.isOp() || player.hasPermission("playground.admin")))
+            if (parentGame.isHostable() || (player.isOp() || player.hasPermission("playground.admin"))) {
                 parentGame.setHoster(player);
+                Bootstrap.LOGGER.info("§cHoster " + player.getName() + " impostato!");
+            }
         }
 
         if (ItemManager.getInteractable("item-back").isPresent())
@@ -180,7 +183,7 @@ public final class LobbyPhase extends GamePhase {
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        event.setQuitMessage(ChatColor.GRAY + player.getName() + " §eè uscito!");
+        Utils.sendMessageAll(MessageType.CHAT, ChatColor.GRAY + player.getName() + " §eè uscito!");
 
         if (parentGame.getHoster().isEmpty())
             return;
@@ -188,14 +191,7 @@ public final class LobbyPhase extends GamePhase {
         if (!parentGame.getHoster().get().getUniqueId().equals(player.getUniqueId()))
             return;
 
-        parentGame.setHoster(null);
-
-        if (Bukkit.getOnlinePlayers().size() > 0) {
-            Player newHoster = Utils.getRandomInList(Bukkit.getOnlinePlayers().stream().toList());
-
-            if (newHoster != null)
-                parentGame.setHoster(newHoster);
-        }
+        parentGame.newHoster();
     }
 
     @EventHandler

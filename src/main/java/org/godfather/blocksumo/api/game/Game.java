@@ -82,4 +82,19 @@ public class Game {
 
         Bukkit.getScheduler().runTaskLater(bootstrap.getPlugin(), () -> player.sendMessage("§cSei diventato l'host di questa partita."), 2L);
     }
+
+    public void newHoster() {
+        Bootstrap.LOGGER.info("§cHoster " + host.getName() + " rimosso.");
+
+        if (Bukkit.getOnlinePlayers().size() - 1 > 0) {
+            Player newHoster = Utils.getRandomInList(Bukkit.getOnlinePlayers().stream().toList());
+
+            if (newHoster != null && !newHoster.getUniqueId().equals(host.getUniqueId()) && (newHoster.isOp() || newHoster.hasPermission("playground.admin"))) {
+                setHoster(newHoster);
+                Bootstrap.LOGGER.info("§cHoster " + newHoster.getName() + " impostato!");
+                return;
+            }
+        }
+        setHoster(null);
+    }
 }

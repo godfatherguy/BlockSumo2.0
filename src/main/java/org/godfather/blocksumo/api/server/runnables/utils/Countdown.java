@@ -14,7 +14,7 @@ public final class Countdown extends BukkitRunnable implements Pausable {
         if (paused)
             return;
 
-        if (actualTime == 0) {
+        if (actualTime <= 1) {
             if (Optional.ofNullable(finish).isPresent())
                 finish.run();
 

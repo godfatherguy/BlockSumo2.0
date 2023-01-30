@@ -22,6 +22,7 @@ import org.godfather.blocksumo.api.game.phases.defaults.lobby.LobbyPhase;
 import org.godfather.blocksumo.api.server.runnables.utils.Countdown;
 import org.godfather.blocksumo.api.utils.Utils;
 import org.godfather.blocksumo.api.utils.messages.MessageType;
+import org.godfather.blocksumo.api.utils.nms.Reflection;
 import org.godfather.blocksumo.bukkit.phases.scoreboards.StartingScoreboard;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
@@ -44,14 +45,13 @@ public class StartingPhase extends GamePhase {
                     }
                 })
                 .onFinish(() -> {
-                    parentGame.nextPhase();
 
                     Utils.sendMessageAll(MessageType.CHAT, "§aLa partita è iniziata!");
                     if(bootstrap.getDescription().isPresent()) {
                         Utils.sendTitleAll(p -> "§a" + bootstrap.getDescription().get().getMinigameName().toUpperCase().replace(" ", ""),
-                                p -> "§aPartita iniziata!", 0, 1, 0);
+                                p -> "§aPartita iniziata!", 0, 10, 0);
                     }
-                    Utils.sendTitleAll(p -> "", p -> "", 0, 1, 0);
+                    parentGame.nextPhase();
                 })
                 .start(bootstrap);
 
@@ -77,8 +77,10 @@ public class StartingPhase extends GamePhase {
         Utils.sendMessageAll(MessageType.CHAT, "§eLa partita inizia in "
                 + Utils.getFormattedTime(time, ChatColor.YELLOW) + ChatColor.YELLOW + timeName);
 
-        Utils.sendTitleAll(p -> Utils.getFormattedTime(time, ChatColor.YELLOW), p -> "", 0, 21, 0);
-        Utils.playSoundAll(Sound.WOOD_CLICK, 1, 1.6F);
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            Reflection.sendTitle(player, Utils.getFormattedTime(time, ChatColor.YELLOW), "", 0, 21, 0);
+        });
+        Utils.playSoundAll(Sound.CLICK, 1, 1);
     }
 
     public int getTime() {
@@ -177,28 +179,18 @@ public class StartingPhase extends GamePhase {
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        event.setQuitMessage(ChatColor.GRAY + player.getName() + " §eè uscito!");
+        Utils.sendMessageAll(MessageType.CHAT, ChatColor.GRAY + player.getName() + " §eè uscito!");
 
-        if (parentGame.getHoster().isPresent() && parentGame.getHoster().get().getUniqueId().equals(player.getUniqueId())) {
-
-            parentGame.setHoster(null);
-            if (Bukkit.getOnlinePlayers().size() > 0) {
-                Player newHoster = Utils.getRandomInList(Bukkit.getOnlinePlayers().stream().toList());
-
-                if (newHoster != null)
-                    parentGame.setHoster(newHoster);
-            }
-        }
+        if (parentGame.getHoster().isPresent() && parentGame.getHoster().get().getUniqueId().equals(player.getUniqueId()))
+            parentGame.newHoster();
 
         if(Bukkit.getOnlinePlayers().size() - 1 >= ((LobbyPhase) previousPhase).getRequiredPlayers())
             return;
 
         parentGame.previousPhase();
 
-        Bukkit.getScheduler().runTaskLater(bootstrap.getPlugin(), () -> {
-            Utils.sendMessageAll(MessageType.CHAT, "§cGiocatori insufficienti per iniziare la partita.");
-            Utils.playSoundAll(Sound.VILLAGER_NO, 1, 1);
-        }, 2L);
+        Utils.sendMessageAll(MessageType.CHAT, "§cGiocatori insufficienti per iniziare la partita.");
+        Utils.playSoundAll(Sound.VILLAGER_NO, 1, 1);
     }
 
     @EventHandler

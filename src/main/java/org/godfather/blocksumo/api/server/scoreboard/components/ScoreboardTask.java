@@ -92,14 +92,13 @@ public class ScoreboardTask extends BukkitRunnable {
     }
 
     public void setupLine(Team team, String line) {
-        if(line.length() <= 16) {
+        if(line.length() < 16) {
             team.setPrefix(line);
             return;
         }
 
         String firstPart = line.substring(0, 16);
         String secondPart = ChatColor.RESET + org.bukkit.ChatColor.getLastColors(firstPart) + line.substring(16);
-
         team.setPrefix(firstPart);
         team.setSuffix(secondPart);
     }

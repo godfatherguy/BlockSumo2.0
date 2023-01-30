@@ -14,6 +14,7 @@ public class BlockSumoBootstrap extends Bootstrap {
         setGameManager(new BlockSumoGameManager(this));
         setDescription(new BlockSumoDescription());
         setPlayerManager(new BlockSumoPlayerManager(this));
+
     }
 
     @Override
