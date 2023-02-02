@@ -1,11 +1,14 @@
 package org.godfather.blocksumo.api.game.phases;
 
+import com.google.common.collect.Lists;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.scheduler.BukkitTask;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.Game;
 import org.godfather.blocksumo.api.server.scoreboard.Scoreboard;
 
+import java.util.List;
 import java.util.Optional;
 
 public abstract class GamePhase implements Listener, Phase {
@@ -16,6 +19,7 @@ public abstract class GamePhase implements Listener, Phase {
     protected Phase nextPhase = null;
     protected boolean running = false;
     private Scoreboard scoreboard;
+    private List<BukkitTask> phaseTasks = Lists.newArrayList();
 
     public GamePhase(Bootstrap bootstrap) {
         this.bootstrap = bootstrap;
@@ -70,5 +74,18 @@ public abstract class GamePhase implements Listener, Phase {
     @Override
     public void setScoreboard(Scoreboard scoreboard) {
         this.scoreboard = scoreboard;
+    }
+
+    public List<BukkitTask> getTasks() {
+        return phaseTasks;
+    }
+
+    public void addTask(BukkitTask task) {
+        phaseTasks.add(task);
+    }
+
+    public void removeTask(BukkitTask task) {
+        task.cancel();
+        phaseTasks.remove(task);
     }
 }

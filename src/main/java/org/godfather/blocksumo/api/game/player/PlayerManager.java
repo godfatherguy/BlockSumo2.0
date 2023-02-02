@@ -7,6 +7,7 @@ import org.godfather.blocksumo.api.server.manager.Manager;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public abstract class PlayerManager<T extends GamePlayer> extends Manager {
 
@@ -18,8 +19,8 @@ public abstract class PlayerManager<T extends GamePlayer> extends Manager {
         this.playerClass = playerClass;
     }
 
-    public T getProfile(Player player) {
-        return gamePlayers.get(player);
+    public Optional<T> getProfile(Player player) {
+        return Optional.ofNullable(gamePlayers.get(player));
     }
 
     private void registerPlayer(Player player) throws Exception {
@@ -43,5 +44,9 @@ public abstract class PlayerManager<T extends GamePlayer> extends Manager {
     protected void unregisterAll() {
         Bukkit.getOnlinePlayers().forEach(this::unregisterPlayer);
         gamePlayers.clear();
+    }
+
+    public boolean isInGame(Player player) {
+        return getProfile(player).isPresent() && !getProfile(player).get().isSpectator();
     }
 }

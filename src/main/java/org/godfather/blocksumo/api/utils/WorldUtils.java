@@ -1,9 +1,11 @@
 package org.godfather.blocksumo.api.utils;
 
-import org.bukkit.entity.Player;
+import com.google.common.collect.Lists;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public final class WorldUtils {
@@ -47,5 +49,37 @@ public final class WorldUtils {
         else if (intPart < 0)
             return intPart - 0.5;
         else return intPart + 0.5;
+    }
+
+    public static List<Block> getBlocksAbove(Location block) {
+        List<Block> blocksAbove = Lists.newArrayList();
+
+        for(int y = 1; y < 256; y++) {
+            Location loc = block.add(0, y, 0);
+
+            if(loc.getBlock().getType() == Material.AIR) continue;
+            blocksAbove.add(loc.getBlock());
+        }
+        return blocksAbove;
+    }
+
+    public static Location getRandomLocation(Location start, double radius, double radiusY) {
+        List<Location> possibleLocations = Lists.newArrayList();
+
+        for (double x = -radius / 2; x < radius / 2; x++) {
+
+            for (double z = -radius / 2; z < radius / 2; z++) {
+
+                for (double y = -radiusY / 2; y < radiusY / 2; y++) {
+                    Location loc = start.add(x, y, z);
+
+                    if(loc.getBlock().getType() != Material.AIR) continue;
+                    if(getBlocksAbove(loc).size() > 0) continue;
+                    possibleLocations.add(loc);
+                }
+            }
+        }
+
+        return Utils.getRandomInList(possibleLocations);
     }
 }
