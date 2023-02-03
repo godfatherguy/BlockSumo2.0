@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -21,7 +20,6 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.game.phases.GamePhase;
 import org.godfather.blocksumo.api.items.ItemBuilder;
-import org.godfather.blocksumo.api.items.ItemManager;
 import org.godfather.blocksumo.api.server.runnables.utils.Countdown;
 import org.godfather.blocksumo.api.utils.MapUtils;
 import org.godfather.blocksumo.api.utils.Utils;
@@ -61,6 +59,8 @@ public class IngamePhase extends GamePhase {
                 }
             }
         }, 1L, 1L));
+
+        bootstrap.getPlayerManager().load();
     }
 
     @Override

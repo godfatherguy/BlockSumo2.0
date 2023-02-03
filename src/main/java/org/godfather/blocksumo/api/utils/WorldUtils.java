@@ -60,6 +60,7 @@ public final class WorldUtils {
             if(loc.getBlock().getType() == Material.AIR) continue;
             blocksAbove.add(loc.getBlock());
         }
+
         return blocksAbove;
     }
 

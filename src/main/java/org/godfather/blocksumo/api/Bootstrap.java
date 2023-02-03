@@ -122,10 +122,6 @@ public abstract class Bootstrap {
         return loaded;
     }
 
-    public FastEventsManager getFastEventsManager() {
-        return fastEventsManager;
-    }
-
     public void registerVariable(FastEvent<?> fastEvent) {
         fastEventsManager.registerEvent(fastEvent);
     }
