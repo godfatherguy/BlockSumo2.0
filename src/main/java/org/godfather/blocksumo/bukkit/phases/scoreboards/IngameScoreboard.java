@@ -1,15 +1,14 @@
 package org.godfather.blocksumo.bukkit.phases.scoreboards;
 
+import com.google.common.collect.Lists;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.godfather.blocksumo.api.Bootstrap;
 import org.godfather.blocksumo.api.server.scoreboard.PhaseScoreboard;
-import org.godfather.blocksumo.api.server.scoreboard.components.ScoreboardLine;
 import org.godfather.blocksumo.bukkit.player.BlockSumoPlayer;
 import org.godfather.blocksumo.bukkit.player.BlockSumoPlayerManager;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -26,8 +25,8 @@ public class IngameScoreboard extends PhaseScoreboard {
     }
 
     @Override
-    public List<ScoreboardLine> getScoreboard(Player player) {
-        List<ScoreboardLine> list = new ArrayList<>();
+    public List<String> getScoreboard(Player player) {
+        List<String> list = Lists.newArrayList();
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
 
         if (bootstrap.getPlayerManager().getProfile(player).isEmpty())
@@ -35,34 +34,30 @@ public class IngameScoreboard extends PhaseScoreboard {
 
         BlockSumoPlayer gPlayer = (BlockSumoPlayer) bootstrap.getPlayerManager().getProfile(player).get();
 
-        list.add(build(15, ChatColor.GRAY + date.format(new Date())));
-        list.add(build(14, ""));
-        list.add(build(13, "§f§lGiocatori rimasti:"));
+        list.add(ChatColor.GRAY + date.format(new Date()));
+        list.add("");
+        list.add("§f§lGiocatori rimasti:");
 
         List<BlockSumoPlayer> players = ((BlockSumoPlayerManager) bootstrap.getPlayerManager()).sortByLives();
-        int actualLine = 12;
 
         if (players.size() < 8 || players.subList(0, 8).contains(gPlayer)) {
             for (BlockSumoPlayer blockSumoPlayer : players) {
-                list.add(build(actualLine, blockSumoPlayer.getFormattedName()));
-                actualLine--;
+                list.add(blockSumoPlayer.getFormattedName());
             }
+
         } else {
             for (int i = 0; i < 6; i++) {
-                list.add(build(actualLine, players.get(i).getFormattedName()));
-                actualLine--;
+                list.add(players.get(i).getFormattedName());
             }
-            actualLine--;
-            list.add(build(actualLine, "§7..."));
-            actualLine--;
-            list.add(build(actualLine, gPlayer.getFormattedName()));
-            actualLine--;
+
+            list.add("§7...");
+            list.add(gPlayer.getFormattedName());
         }
 
-        list.add(build(actualLine, "   "));
-        list.add(build(actualLine - 1, "§fUccisioni: §c" + gPlayer.getKills()));
-        list.add(build(actualLine - 2, "    "));
-        list.add(build(actualLine - 3, "§eplay.godfather.it   "));
+        list.add("   ");
+        list.add("§fUccisioni: §c" + gPlayer.getKills());
+        list.add("    ");
+        list.add("§eplay.godfather.it   ");
 
         return list;
     }

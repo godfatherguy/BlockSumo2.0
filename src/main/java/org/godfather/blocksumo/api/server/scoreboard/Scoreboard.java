@@ -9,7 +9,7 @@ public interface Scoreboard {
 
     String getTitle();
 
-    List<ScoreboardLine> getScoreboard(Player player);
+    List<String> getScoreboard(Player player);
 
     default String perPlayerPrefix(Player player) {
         return "";

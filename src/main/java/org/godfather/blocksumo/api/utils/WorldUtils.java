@@ -53,13 +53,13 @@ public final class WorldUtils {
             return false;
         if (location.getBlock().isLiquid())
             return false;
-        if(location.add(0, -1, 0).getBlock().isEmpty())
+        if (location.add(0, -1, 0).getBlock().isEmpty())
             return false;
 
         return location.add(0, 1, 0).getBlock().isEmpty() && location.add(0, 2, 0).getBlock().isEmpty();
     }
 
-    public static Location getRandomLocation(Location start, double radius, double radiusY) {
+    public static Location getRandomLocation(Location start, double radius, double radiusY, boolean lookAtCenter) {
         Location randomLocation = null;
         int multiplier;
 
@@ -84,6 +84,12 @@ public final class WorldUtils {
         randomLocation.setX(getAdjusted(randomLocation.getX()));
         randomLocation.setY(getAdjusted(randomLocation.getY()));
         randomLocation.setZ(getAdjusted(randomLocation.getZ()));
+
+        if (lookAtCenter) {
+            randomLocation.setDirection(randomLocation.getDirection().multiply(-1));
+        }
+
+        randomLocation.setYaw(getNearestYaw(randomLocation.getYaw()));
 
         return randomLocation;
     }

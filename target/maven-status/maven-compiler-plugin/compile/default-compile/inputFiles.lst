@@ -3,6 +3,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\BlockSumoBootstrap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\defaults\DelayedTask.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\components\ScoreboardTask.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\ingame\IngamePhase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\PhaseScoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\FastEvent.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\GamePhase.java
@@ -25,6 +26,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\map\MapManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\events\FastEventsManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\nms\Reflection.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\tablist\Tablist.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\Utils.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\messages\MessageFlag.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\BlockSumoGame.java
@@ -40,6 +42,7 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\manager\BlockSumoConfigManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\scoreboards\LobbyScoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\player\GamePlayer.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\player\GameColor.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\phases\defaults\starting\StartingPhase.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\scoreboard\Scoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\utils\MapUtils.java
@@ -52,7 +55,9 @@ C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\bl
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\map\GameMap.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\player\BlockSumoPlayer.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\game\Game.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\tablist\TablistTask.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\MinigamePlugin.java
+C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\phases\scoreboards\IngameScoreboard.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\server\runnables\task\defaults\InstantTask.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\api\items\ItemManager.java
 C:\Users\Giulio\DevProjects\Java\Spigot\BlockSumo\src\main\java\org\godfather\blocksumo\bukkit\player\BlockSumoPlayerManager.java

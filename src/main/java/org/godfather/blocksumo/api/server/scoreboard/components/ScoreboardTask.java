@@ -50,7 +50,10 @@ public class ScoreboardTask extends BukkitRunnable {
         Objective objective = scoreboard.registerNewObjective(playerScoreboard.getTitle(), "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-        for (ScoreboardLine line : playerScoreboard.getScoreboard(player)) {
+
+        for (int i = 0; i < playerScoreboard.getScoreboard(player).size(); i++) {
+            ScoreboardLine line = new ScoreboardLine(playerScoreboard.getScoreboard(player).size() - i, playerScoreboard.getScoreboard(player).get(i));
+
             Team team = scoreboard.registerNewTeam(String.valueOf(line.getPos()));
             team.addEntry(line.getAssociated() + "");
             setupLine(team, line.getString());
@@ -63,7 +66,9 @@ public class ScoreboardTask extends BukkitRunnable {
     private void update(Player player) {
         org.bukkit.scoreboard.Scoreboard scoreboard = player.getScoreboard();
 
-        for (ScoreboardLine line : playerScoreboard.getScoreboard(player)) {
+        for (int i = 0; i < playerScoreboard.getScoreboard(player).size(); i++) {
+            ScoreboardLine line = new ScoreboardLine(playerScoreboard.getScoreboard(player).size() - i, playerScoreboard.getScoreboard(player).get(i));
+
             if (scoreboard.getTeam(String.valueOf(line.getPos())) == null) {
                 scoreboard.registerNewTeam(String.valueOf(line.getPos()));
             }
@@ -92,7 +97,7 @@ public class ScoreboardTask extends BukkitRunnable {
     }
 
     public void setupLine(Team team, String line) {
-        if(line.length() < 16) {
+        if (line.length() < 16) {
             team.setPrefix(line);
             return;
         }

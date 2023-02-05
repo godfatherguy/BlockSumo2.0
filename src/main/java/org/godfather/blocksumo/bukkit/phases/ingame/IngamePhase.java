@@ -115,7 +115,7 @@ public class IngamePhase extends GamePhase {
         player.getInventory().setLeggings(new ItemBuilder(Material.LEATHER_LEGGINGS).setColor(gPlayer.getColor().getDyeColor()).get());
         player.getInventory().setBoots(new ItemBuilder(Material.LEATHER_BOOTS).setColor(gPlayer.getColor().getDyeColor()).get());
 
-        Utils.teleport(player, WorldUtils.getRandomLocation(MapUtils.getLocation(bootstrap, "spawn"), 40, 20));
+        Utils.teleport(player, WorldUtils.getRandomLocation(MapUtils.getLocation(bootstrap, "spawn"), 50, 30, true));
     }
 
     private void killPlayer(BlockSumoPlayer player) {

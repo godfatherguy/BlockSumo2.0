@@ -4,6 +4,7 @@ org\godfather\blocksumo\api\server\runnables\task\defaults\DelayedTask$1.class
 org\godfather\blocksumo\api\server\scoreboard\Scoreboard.class
 org\godfather\blocksumo\api\game\GameDescription.class
 org\godfather\blocksumo\api\items\Interactable.class
+org\godfather\blocksumo\bukkit\phases\ingame\IngamePhase.class
 org\godfather\blocksumo\api\server\runnables\task\Pausable.class
 org\godfather\blocksumo\api\MinigamePlugin.class
 org\godfather\blocksumo\api\server\ServerPhase.class
@@ -16,12 +17,14 @@ org\godfather\blocksumo\api\server\runnables\task\defaults\RepeatedTask.class
 org\godfather\blocksumo\api\server\scoreboard\components\ScoreboardLine.class
 org\godfather\blocksumo\api\utils\FileUtil.class
 org\godfather\blocksumo\api\server\events\FastEventsManager.class
+org\godfather\blocksumo\bukkit\phases\scoreboards\IngameScoreboard.class
 org\godfather\blocksumo\api\server\runnables\utils\Countdown.class
 org\godfather\blocksumo\api\server\events\FastEvent.class
 org\godfather\blocksumo\api\utils\Utils.class
 org\godfather\blocksumo\api\server\scoreboard\ScoreboardManager.class
 org\godfather\blocksumo\api\server\manager\Manager.class
 org\godfather\blocksumo\api\server\events\custom\InteractableInteractEvent.class
+org\godfather\blocksumo\bukkit\player\GameColor.class
 org\godfather\blocksumo\api\server\events\ServerFastEvent$FastEventBuilder.class
 org\godfather\blocksumo\BlockSumoBootstrap.class
 org\godfather\blocksumo\api\server\runnables\task\defaults\InstantTask.class
@@ -48,8 +51,10 @@ org\godfather\blocksumo\api\game\phases\Phase.class
 org\godfather\blocksumo\bukkit\player\BlockSumoPlayerManager.class
 org\godfather\blocksumo\bukkit\commands\CommandSound.class
 org\godfather\blocksumo\bukkit\manager\BlockSumoConfigManager.class
+org\godfather\blocksumo\api\server\tablist\Tablist.class
 org\godfather\blocksumo\bukkit\player\BlockSumoPlayer.class
 org\godfather\blocksumo\api\utils\MapUtils.class
+org\godfather\blocksumo\api\server\tablist\TablistTask.class
 org\godfather\blocksumo\api\Bootstrap.class
 org\godfather\blocksumo\api\config\ConfigManager.class
 org\godfather\blocksumo\api\game\phases\defaults\starting\StartingPhase.class
