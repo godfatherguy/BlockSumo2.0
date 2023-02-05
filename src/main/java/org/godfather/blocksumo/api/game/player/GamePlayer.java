@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public abstract class GamePlayer {
 
-    private final Player player;
+    protected final Player player;
     private boolean spectator = false;
     private boolean winner = false;
 

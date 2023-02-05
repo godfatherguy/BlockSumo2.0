@@ -26,6 +26,7 @@ import org.godfather.blocksumo.api.utils.Utils;
 import org.godfather.blocksumo.api.utils.WorldUtils;
 import org.godfather.blocksumo.api.utils.messages.MessageType;
 import org.godfather.blocksumo.api.utils.nms.Reflection;
+import org.godfather.blocksumo.bukkit.phases.scoreboards.IngameScoreboard;
 import org.godfather.blocksumo.bukkit.player.BlockSumoPlayer;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
@@ -34,8 +35,8 @@ public class IngamePhase extends GamePhase {
     private final ItemBuilder itemScissor = new ItemBuilder(Material.SHEARS)
             .setName("§aCesoia magica")
             .setUnbreakable()
-            .addUnsafeEnchantment(Enchantment.DIG_SPEED, 5)
-            .hideAttributes();
+            .hideAttributes()
+            .addGlow();
 
     public IngamePhase(Bootstrap bootstrap) {
         super(bootstrap);
@@ -61,6 +62,9 @@ public class IngamePhase extends GamePhase {
         }, 1L, 1L));
 
         bootstrap.getPlayerManager().load();
+        Bukkit.getScheduler().runTaskLater(bootstrap.getPlugin(), () -> Bukkit.getOnlinePlayers().forEach(this::setupPlayer), 2L);
+
+        setScoreboard(new IngameScoreboard(bootstrap));
     }
 
     @Override
@@ -96,14 +100,22 @@ public class IngamePhase extends GamePhase {
         player.setSaturation(100);
         player.setGameMode(GameMode.SURVIVAL);
         player.getInventory().clear();
-        player.getInventory().setArmorContents(null);
         player.setAllowFlight(false);
         player.setFlying(false);
 
         player.getInventory().setItem(0, itemScissor.get());
         //todo setup altri items
 
-        Utils.teleport(player, WorldUtils.getRandomLocation(MapUtils.getLocation(bootstrap, "spawn"), 80, 20));
+        if(bootstrap.getPlayerManager().getProfile(player).isEmpty())
+            return;
+        BlockSumoPlayer gPlayer = (BlockSumoPlayer) bootstrap.getPlayerManager().getProfile(player).get();
+
+        player.getInventory().setHelmet(new ItemBuilder(Material.LEATHER_HELMET).setColor(gPlayer.getColor().getDyeColor()).get());
+        player.getInventory().setChestplate(new ItemBuilder(Material.LEATHER_CHESTPLATE).setColor(gPlayer.getColor().getDyeColor()).get());
+        player.getInventory().setLeggings(new ItemBuilder(Material.LEATHER_LEGGINGS).setColor(gPlayer.getColor().getDyeColor()).get());
+        player.getInventory().setBoots(new ItemBuilder(Material.LEATHER_BOOTS).setColor(gPlayer.getColor().getDyeColor()).get());
+
+        Utils.teleport(player, WorldUtils.getRandomLocation(MapUtils.getLocation(bootstrap, "spawn"), 40, 20));
     }
 
     private void killPlayer(BlockSumoPlayer player) {

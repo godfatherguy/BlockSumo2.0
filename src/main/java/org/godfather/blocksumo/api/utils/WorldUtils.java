@@ -1,11 +1,8 @@
 package org.godfather.blocksumo.api.utils;
 
-import com.google.common.collect.Lists;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 
-import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("unused")
 public final class WorldUtils {
@@ -51,36 +48,43 @@ public final class WorldUtils {
         else return intPart + 0.5;
     }
 
-    public static List<Block> getBlocksAbove(Location block) {
-        List<Block> blocksAbove = Lists.newArrayList();
+    public static boolean isLocationSafe(Location location) {
+        if (!location.getBlock().isEmpty())
+            return false;
+        if (location.getBlock().isLiquid())
+            return false;
+        if(location.add(0, -1, 0).getBlock().isEmpty())
+            return false;
 
-        for(int y = 1; y < 256; y++) {
-            Location loc = block.add(0, y, 0);
-
-            if(loc.getBlock().getType() == Material.AIR) continue;
-            blocksAbove.add(loc.getBlock());
-        }
-
-        return blocksAbove;
+        return location.add(0, 1, 0).getBlock().isEmpty() && location.add(0, 2, 0).getBlock().isEmpty();
     }
 
     public static Location getRandomLocation(Location start, double radius, double radiusY) {
-        List<Location> possibleLocations = Lists.newArrayList();
+        Location randomLocation = null;
+        int multiplier;
 
-        for (double x = -radius / 2; x < radius / 2; x++) {
+        do {
+            multiplier = new Random().nextInt(2) == 0 ? -1 : 1;
+            double x = new Random().nextDouble(radius / 2) * multiplier;
 
-            for (double z = -radius / 2; z < radius / 2; z++) {
+            multiplier = new Random().nextInt(2) == 0 ? -1 : 1;
+            double z = new Random().nextDouble(radius / 2) * multiplier;
 
-                for (double y = -radiusY / 2; y < radiusY / 2; y++) {
-                    Location loc = start.add(x, y, z);
+            Location temporary = start.add(x, 0, z);
+            if (temporary.getWorld().getHighestBlockAt(temporary).getY() > start.getY() + radiusY / 2
+                    || temporary.getWorld().getHighestBlockAt(temporary).getY() < start.getY() - radiusY / 2)
+                continue;
 
-                    if(loc.getBlock().getType() != Material.AIR) continue;
-                    if(getBlocksAbove(loc).size() > 0) continue;
-                    possibleLocations.add(loc);
-                }
-            }
-        }
+            temporary.setY(temporary.getWorld().getHighestBlockAt(temporary).getY());
 
-        return Utils.getRandomInList(possibleLocations);
+            randomLocation = temporary.getBlock().isEmpty() ? temporary : temporary.add(0, 1, 0);
+
+        } while (randomLocation == null || !isLocationSafe(randomLocation));
+
+        randomLocation.setX(getAdjusted(randomLocation.getX()));
+        randomLocation.setY(getAdjusted(randomLocation.getY()));
+        randomLocation.setZ(getAdjusted(randomLocation.getZ()));
+
+        return randomLocation;
     }
 }

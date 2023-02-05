@@ -12,7 +12,7 @@ import java.util.Optional;
 public abstract class PlayerManager<T extends GamePlayer> extends Manager {
 
     private final Class<T> playerClass;
-    private final Map<Player, T> gamePlayers = new HashMap<>();
+    protected final Map<Player, T> gamePlayers = new HashMap<>();
 
     public PlayerManager(Bootstrap bootstrap, Class<T> playerClass) {
         super(bootstrap);
@@ -24,7 +24,7 @@ public abstract class PlayerManager<T extends GamePlayer> extends Manager {
     }
 
     private void registerPlayer(Player player) throws Exception {
-        gamePlayers.put(player, playerClass.getDeclaredConstructor().newInstance());
+        gamePlayers.put(player, playerClass.getConstructor(Player.class).newInstance(player));
     }
 
     public void unregisterPlayer(Player player) {

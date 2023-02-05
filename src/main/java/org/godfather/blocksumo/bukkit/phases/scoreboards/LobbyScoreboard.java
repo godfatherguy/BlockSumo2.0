@@ -39,7 +39,7 @@ public class LobbyScoreboard extends PhaseScoreboard {
         list.add(build(4, "   "));
         list.add(build(3, "Versione: §a" + bootstrap.getPlugin().getDescription().getVersion()));
         list.add(build(2, "    "));
-        list.add(build(1, ChatColor.YELLOW + "play.godfather.it   "));
+        list.add(build(1, "§eplay.godfather.it   "));
 
         return list;
     }

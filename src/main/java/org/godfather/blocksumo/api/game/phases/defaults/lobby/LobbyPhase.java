@@ -38,8 +38,6 @@ public final class LobbyPhase extends GamePhase {
         setNextPhase(new StartingPhase(bootstrap));
         ItemManager.registerInteractable("item-back", new ItemBack());
         ItemManager.registerInteractable("item-settings", new ItemSettings());
-
-        bootstrap.getPlayerManager().load();
     }
 
     public void onUnload() {
