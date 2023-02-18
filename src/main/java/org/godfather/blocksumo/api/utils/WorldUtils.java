@@ -2,7 +2,8 @@ package org.godfather.blocksumo.api.utils;
 
 import org.bukkit.Location;
 
-import java.util.Random;
+import java.util.HashSet;
+import java.util.Set;
 
 @SuppressWarnings("unused")
 public final class WorldUtils {
@@ -60,6 +61,7 @@ public final class WorldUtils {
     }
 
     public static Location getRandomLocation(Location start, double radius, double radiusY, boolean lookAtCenter) {
+        /*
         Location randomLocation = null;
         int multiplier;
 
@@ -92,5 +94,33 @@ public final class WorldUtils {
         randomLocation.setYaw(getNearestYaw(randomLocation.getYaw()));
 
         return randomLocation;
+
+         */
+
+        Set<Location> randomLocations = new HashSet<>();
+
+        for (double x = -radius / 2; x < radius / 2; x++) {
+            for (double z = -radius / 2; z < radius / 2; z++) {
+                Location temporary = start.add(x, 0, z);
+                temporary.setY(0.0);
+
+                if(temporary.getWorld().getHighestBlockAt(temporary) == null || !isLocationSafe(temporary.getWorld().getHighestBlockAt(temporary).getLocation())) {
+                    continue;
+                }
+
+                //todo sistemare
+
+                if (temporary.getWorld().getHighestBlockAt(temporary).getY() > start.getY() + radiusY / 2
+                        || temporary.getWorld().getHighestBlockAt(temporary).getY() < start.getY() - radiusY / 2)
+                    continue;
+
+                temporary.setY(temporary.getWorld().getHighestBlockAt(temporary).getY());
+                Location randomLocation = temporary.getBlock().isEmpty() ? temporary : temporary.add(0, 1, 0);
+
+                randomLocations.add(randomLocation);
+            }
+        }
+
+        return Utils.getRandomInList(randomLocations.stream().toList());
     }
 }
